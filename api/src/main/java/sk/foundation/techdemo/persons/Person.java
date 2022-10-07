@@ -20,11 +20,13 @@ import sk.foundation.techdemo.infrastructure.db.IdentifiableEntity;
 @Entity
 @Table(
 		name = "PERSON",
-		uniqueConstraints = { @UniqueConstraint(name = "UK_EMAIL", columnNames = "EMAIL") },
+		uniqueConstraints = { @UniqueConstraint(name = Person.UK_EMAIL, columnNames = "EMAIL") },
 		indexes = { @Index(name = "IDX_LN_FN", columnList = "LAST_NAME asc, FIRST_NAME asc") })
 public class Person extends IdentifiableEntity<Long> {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String UK_EMAIL = "UK_EMAIL";
 
 	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
