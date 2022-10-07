@@ -1,0 +1,5 @@
+MYSQL_VERSION=8.0.30
+MYSQL_DATABASE_USERNAME=root
+MYSQL_DATABASE_PASSWORD=[fill db password here]
+MYSQL_PORT=[mysql port where DB will be accessible]
+API_PORT=[api port where you want API being accessible]

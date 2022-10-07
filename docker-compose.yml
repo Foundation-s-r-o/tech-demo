@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    restart: unless-stopped
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_DATABASE_PASSWORD}
+    networks:
+      - tech-demo
+    command: ['mysqld']
+
+  api:
+    build:
+      context: api/
+      dockerfile: Dockerfile
+    ports:
+      - ${API_PORT}:8080
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/tech-demo
+      - SPRING_DATASOURCE_USERNAME=${MYSQL_DATABASE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_DATABASE_PASSWORD}
+    networks:
+      - tech-demo
+
+volumes:
+  mysql-data:
+networks:
+  tech-demo:
