@@ -10,5 +10,11 @@ values
 	'Admin', 
 	'Admin', 
 	'admin@tech-demo.sk' 
+),
+(
+	2, 
+	'DruhyFN', 
+	'DruhyLN', 
+	'druhy@tech-demo.sk' 
 )
 ;

@@ -51,12 +51,9 @@ public class PersonApiServiceImpl implements PersonApiService {
 
 	@Override
 	public IdResponseDTO<Long> create(@Valid PersonModifyRequestDTO dto) {
-		Person person = new Person();
-
-		updateFromDTO(dto, person);
-
 		try {
-			personService.save(person);
+			Person person = personService.persist(dto);
+			return new IdResponseDTO<>(person.getId());
 		} catch (DataIntegrityViolationException e) {
 			if (e.getCause() instanceof ConstraintViolationException cve) {
 				if (cve.getConstraintName().contains(Person.UK_EMAIL)) {
@@ -66,36 +63,21 @@ public class PersonApiServiceImpl implements PersonApiService {
 			log.error("Error while creating person", e);
 			throw e;
 		}
-
-		return new IdResponseDTO<>(person.getId());
 	}
 
 	@Override
 	public void update(Long id, @Valid PersonModifyRequestDTO dto) {
-		Person person = personRepository.getReferenceById(id);
-
-		updateFromDTO(dto, person);
-
 		try {
-			personService.save(person);
+			personService.update(id, dto);
 		} catch (DataIntegrityViolationException e) {
 			if (e.getCause() instanceof ConstraintViolationException cve) {
 				if (cve.getConstraintName().contains(Person.UK_EMAIL)) {
 					throw new ConflictException("Person with same email already exists", e);
 				}
 			}
-			log.error("Error while creating person", e);
+			log.error("Error while updating person", e);
 			throw e;
 		}
-	}
-
-	private void updateFromDTO(PersonModifyRequestDTO dto, Person person) {
-		person.setFirstName(dto.getFirstName());
-		person.setLastName(dto.getLastName());
-		person.setEmail(dto.getEmail());
-		person.setAddress(dto.getAddress());
-		person.setState(dto.getState());
-		person.setPhoneNumber(dto.getPhoneNumber());
 	}
 
 	@Override

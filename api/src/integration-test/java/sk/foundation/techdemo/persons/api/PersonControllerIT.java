@@ -2,6 +2,7 @@ package sk.foundation.techdemo.persons.api;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -45,7 +46,7 @@ class PersonControllerIT extends BaseIT {
 						.param("sortBy", "NAME")
 						.param("sortDesc", "false"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.totalElements").value((1L)))
+				.andExpect(jsonPath("$.totalElements").value((2L)))
 				.andExpect(jsonPath("$.elements[0].id").value((1L)))
 				.andExpect(jsonPath("$.elements[0].firstName").value("Admin"))
 				.andExpect(jsonPath("$.elements[0].lastName").value("Admin"))
@@ -77,6 +78,36 @@ class PersonControllerIT extends BaseIT {
 		String content = objectMapper.writer().writeValueAsString(dto);
 		mockMvc.perform(
 				post("/api/persons").accept(MediaType.APPLICATION_JSON)
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(content))
+				.andExpect(status().is(409));
+	}
+
+	@Test
+	@Sql({ "/sql/clearAll.sql", "/sql/data.sql" })	
+	void updatePerson_success() throws Exception {
+		PersonModifyRequestDTO dto = new PersonModifyRequestDTO();
+		dto.setFirstName("fn#new");
+		dto.setLastName("ln#new");
+		dto.setEmail("fn@ln.com");
+		String content = objectMapper.writer().writeValueAsString(dto);
+		mockMvc.perform(
+				put("/api/persons/{id}", 1).accept(MediaType.APPLICATION_JSON)
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(content))
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	@Sql({ "/sql/clearAll.sql", "/sql/data.sql" })	
+	void updatePerson_conflictingEmail() throws Exception {
+		PersonModifyRequestDTO dto = new PersonModifyRequestDTO();
+		dto.setFirstName("fn#new");
+		dto.setLastName("ln#new");
+		dto.setEmail("admin@tech-demo.sk");
+		String content = objectMapper.writer().writeValueAsString(dto);
+		mockMvc.perform(
+				put("/api/persons/{id}", 2).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(content))
 				.andExpect(status().is(409));

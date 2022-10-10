@@ -48,8 +48,8 @@ class PersonRepositoryIT {
 		user2.setLastName("LN2");
 		user2.setEmail("u1@mail.sk");
 
-		assertDoesNotThrow(() -> personRepository.save(user1));
-		assertThrows(DataIntegrityViolationException.class, () -> personRepository.save(user2));
+		assertDoesNotThrow(() -> personRepository.persist(user1));
+		assertThrows(DataIntegrityViolationException.class, () -> personRepository.persist(user2));
 	}
 
 }
