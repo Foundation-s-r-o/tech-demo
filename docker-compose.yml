@@ -30,6 +30,18 @@ services:
     networks:
       - tech-demo
 
+  ui:
+    build:
+      context: ui/
+      dockerfile: Dockerfile
+    ports:
+      - ${UI_PORT_EXPORTED}:80
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - tech-demo
+
 volumes:
   mysql-data:
 networks:

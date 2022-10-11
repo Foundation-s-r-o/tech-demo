@@ -1,11 +1,8 @@
 # pull official base image
-FROM node:16
+FROM node:16-alpine AS BUILD_IMAGE
 
 # set working directory
 WORKDIR /app
-
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
 
 # install app dependencies
 COPY package.json ./
@@ -13,7 +10,16 @@ COPY package-lock.json ./
 RUN npm ci --silent
 
 # add app
-COPY . ./
+COPY tsconfig.json ./
+COPY webpack.config.js ./
+COPY .env ./
+COPY src src
 
-# start app
-CMD ["npm", "start"]
+# build
+RUN npm run build
+
+# pull official base image
+FROM nginx:alpine
+
+# copy from build image
+COPY --from=BUILD_IMAGE /app/dist /usr/share/nginx/html/
