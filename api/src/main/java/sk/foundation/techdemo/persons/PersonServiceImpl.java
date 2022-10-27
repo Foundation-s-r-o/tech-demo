@@ -39,7 +39,7 @@ public class PersonServiceImpl implements PersonService {
 
 	private void updateFromDTO(PersonModifyRequestDTO dto, Person person) {
 		person.setFirstName(dto.getFirstName());
-		person.setLastName(dto.getLastName());
+		//person.setLastName(dto.getLastName());
 		person.setEmail(dto.getEmail());
 		person.setAddress(dto.getAddress());
 		person.setState(dto.getState());
