@@ -1,10 +1,12 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 const Dotenv = require('dotenv-webpack')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = (env, argv) => {
+    const envFileVars = require('dotenv').config().parsed;
     const devMode = argv.mode === 'development'
 
     return {
@@ -14,7 +16,10 @@ module.exports = (env, argv) => {
             filename: 'bundle.js',
         },
         plugins: [
-            new Dotenv(),
+            // new Dotenv(),
+            new webpack.DefinePlugin({
+                'process.env.APP_API_SERVER_URL': '\'' + (env?.APP_API_SERVER_URL || process?.env?.APP_API_SERVER_URL || envFileVars?.APP_API_SERVER_URL || '/') + '\'',
+            }),
             new HTMLWebpackPlugin({
                 template: './src/index.html',
             }),
