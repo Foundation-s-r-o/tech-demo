@@ -36,11 +36,8 @@ jobs:
         ADMIN_PASSWORD : ${{ secrets.ADMIN_PASSWORD }}
         IMAGE_TAG: latest
       run: |
-        #DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/$ECR_REPO/tech-demo-api:$IMAGE_TAG ./api
         docker build -t $ECR_REGISTRY/$ECR_REPO/tech-demo-ui:$IMAGE_TAG \
           --build-arg APP_API_SERVER_URL=http://localhost:8082/ \
           --build-arg ADMIN_USERNAME=admin \ 
           --build-arg ADMIN_PASS=$ADMIN_PASSWORD \
           ./ui
-        #docker push $ECR_REGISTRY/$ECR_REPO/tech-demo-api:$IMAGE_TAG
-        #docker push $ECR_REGISTRY/$ECR_REPO/tech-demo-ui:$IMAGE_TAG
