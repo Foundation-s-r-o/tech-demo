@@ -15,6 +15,7 @@ services:
     command: ['mysqld']
 
   api:
+    image: foundation/tech-demo-api:latest
     build:
       context: api/
       dockerfile: Dockerfile
@@ -31,9 +32,15 @@ services:
       - tech-demo
 
   ui:
+    image: foundation/tech-demo-ui:latest
     build:
       context: ui/
       dockerfile: Dockerfile
+      args:
+        - APP_API_SERVER_URL=${APP_API_SERVER_URL}
+        - ADMIN_USERNAME=${ADMIN_USERNAME}
+        - ADMIN_PASS=${ADMIN_PASS}
+        - PLAYWRIGHT_SLOW_MO=${PLAYWRIGHT_SLOW_MO}
     ports:
       - ${UI_PORT_EXPORTED}:80
     restart: unless-stopped

@@ -7,6 +7,11 @@ MYSQL_DATABASE_PASSWORD=root1
 # port through which MySQL instance inside Docker will be available
 MYSQL_PORT_EXPORTED=9401
 # port through which REST API inside Docker will be available
-# also important thing make sure that ui/.env APP_API_SERVER_URL uses this port
+# also important thing make sure that APP_API_SERVER_URL uses this port
 API_PORT_EXPORTED=8082
 UI_PORT_EXPORTED=9002
+
+APP_API_SERVER_URL=http://localhost:8082/
+PLAYWRIGHT_SLOW_MO=1000
+ADMIN_USERNAME=admin
+ADMIN_PASS=
