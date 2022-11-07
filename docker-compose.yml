@@ -17,8 +17,11 @@ services:
   api:
     image: foundation/tech-demo-api:latest
     build:
-      context: api/
       dockerfile: Dockerfile
+      args:
+        - ADMIN_USERNAME=${ADMIN_USERNAME}
+        - ADMIN_PASS=${ADMIN_PASS}
+        - PLAYWRIGHT_SLOW_MO=${PLAYWRIGHT_SLOW_MO}
     ports:
       - ${API_PORT_EXPORTED}:8080
     restart: unless-stopped
@@ -28,24 +31,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/tech-demo
       - SPRING_DATASOURCE_USERNAME=${MYSQL_DATABASE_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${MYSQL_DATABASE_PASSWORD}
-    networks:
-      - tech-demo
-
-  ui:
-    image: foundation/tech-demo-ui:latest
-    build:
-      context: ui/
-      dockerfile: Dockerfile
-      args:
-        - APP_API_SERVER_URL=${APP_API_SERVER_URL}
-        - ADMIN_USERNAME=${ADMIN_USERNAME}
-        - ADMIN_PASS=${ADMIN_PASS}
-        - PLAYWRIGHT_SLOW_MO=${PLAYWRIGHT_SLOW_MO}
-    ports:
-      - ${UI_PORT_EXPORTED}:80
-    restart: unless-stopped
-    depends_on:
-      - api
     networks:
       - tech-demo
 
