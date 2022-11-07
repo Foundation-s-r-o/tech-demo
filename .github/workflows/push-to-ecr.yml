@@ -2,6 +2,9 @@ name: Push Docker Image to ECR
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag docker image' 
 
 jobs:
   
@@ -32,9 +35,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ADMIN_PASSWORD : ${{ secrets.ADMIN_PASSWORD }}
-        IMAGE_TAG: latest
+        IMAGE_TAG:  ${{ github.event.inputs.tag }}
       run: |
-        DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/foundation/tech-demo-api:$IMAGE_TAG ./api
-        docker build -t $ECR_REGISTRY/foundation/tech-demo-ui:$IMAGE_TAG --build-arg APP_API_SERVER_URL=http://localhost:8082/ --build-arg ADMIN_USERNAME=admin --build-arg ADMIN_PASS=$ADMIN_PASSWORD ./ui
+        DOCKER_BUILDKIT=1 docker build -t $ECR_REGISTRY/foundation/tech-demo-api:$IMAGE_TAG --build-arg ADMIN_USERNAME=admin --build-arg ADMIN_PASS=$ADMIN_PASSWORD .
         docker push $ECR_REGISTRY/foundation/tech-demo-api:$IMAGE_TAG
-        docker push $ECR_REGISTRY/foundation/tech-demo-ui:$IMAGE_TAG
