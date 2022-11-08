@@ -39,7 +39,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ADMIN_PASSWORD : ${{ secrets.ADMIN_PASSWORD }}
         IMAGE_TAG:  ${{ github.event.inputs.tag }}
-        DOCKER_BUILDKIT: 1
+        DOCKER_BUILDKIT: 0
       run: |
         docker build -t $ECR_REGISTRY/foundation/tech-demo-api:$IMAGE_TAG --build-arg ADMIN_USERNAME=admin --build-arg ADMIN_PASS=$ADMIN_PASSWORD .
         docker push $ECR_REGISTRY/foundation/tech-demo-api:$IMAGE_TAG
