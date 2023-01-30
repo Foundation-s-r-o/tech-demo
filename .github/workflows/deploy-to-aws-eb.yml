@@ -17,7 +17,7 @@ on:
         required: true
         type: choice
         options:
-        - Techdemo-env
+        - Techdemo-env-2
 
 jobs:
   deploy:
