@@ -8,7 +8,7 @@
 ## Code Style
 Code style is guarded by Checkstyle plugin, with these [rules](checkstyle/checkstyle.xml).
 Formatting rules for Eclipse IDE can be found [here](checkstyle/code-formatter-rules.xml).
-
+[docker-compose.yml](..%2Fdocker-compose.yml)
 To import these rules in Eclipse, do:
 ```
 Window > Preferences > Java > Code Style > Formatter > Import
@@ -29,3 +29,20 @@ mvn verify
 ```
 ./mvnw spring-boot:run -Dspring-boot.run.arguments="--spring.datasource.url=jdbc:mysql://localhost:3306/tech-demo --spring.datasource.username=[db user] --spring.datasource.password=[db pwd]"
 ```
+
+## Continuous Integration
+![Continuous Integration](https://img.shields.io/github/actions/workflow/status/Foundation-s-r-o/tech-demo/maven.yml)
+
+## SonarQube
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)
+
+![Duplicated Lines Density](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=duplicated_lines_density)
+![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=vulnerabilities)
+![Bugs](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=bugs)
+![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=security_rating)
+![Sqale Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_rating)
+![Code Smells](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=code_smells)
+![Ncloc](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=ncloc)
+![Sqale Index](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_index)
+![Alert Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=alert_status)
+![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=reliability_rating)
