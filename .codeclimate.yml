@@ -3,10 +3,10 @@ plugins:
     enabled: true
   checkstyle:
     enabled: true
+  stylelint:
+    enabled: true  
+  eslint:
+    enabled: true
   tslint:
     enabled: true
     config: tsconfig.json
-  eslint:
-    enabled: true
-  stylelint:
-    enabled: true  
