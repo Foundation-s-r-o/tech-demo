@@ -33,6 +33,9 @@ mvn verify
 ## Continuous Integration
 ![Continuous Integration](https://img.shields.io/github/actions/workflow/status/Foundation-s-r-o/tech-demo/maven.yml)
 
+## CodeClimate
+![CodeClimate](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/maintainability)
+
 ## SonarQube
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)
 
