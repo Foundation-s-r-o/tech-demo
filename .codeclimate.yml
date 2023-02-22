@@ -8,3 +8,5 @@ plugins:
     config: tsconfig.json
   eslint:
     enabled: true
+  stylelint:
+    enabled: true  
