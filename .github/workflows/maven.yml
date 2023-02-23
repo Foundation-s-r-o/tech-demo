@@ -31,4 +31,4 @@ jobs:
       # The report file must be there, otherwise Code Climate won't find it
         coverageCommand: mvn -B package
         coverageLocations: target/jacoco-report/jacoco.xml:jacoco
-        working-directory: api
+        workingDirectory: api
