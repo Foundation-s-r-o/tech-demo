@@ -35,6 +35,7 @@ mvn verify
 
 ## CodeClimate
 ![CodeClimate](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/test_coverage)](https://codeclimate.com/github/Foundation-s-r-o/tech-demo/test_coverage)
 
 ## SonarQube
 ![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)
