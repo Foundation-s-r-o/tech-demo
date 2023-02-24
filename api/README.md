@@ -31,22 +31,21 @@ mvn verify
 ```
 
 ## Continuous Integration
-![Continuous Integration](https://img.shields.io/github/actions/workflow/status/Foundation-s-r-o/tech-demo/maven.yml)
+[![Continuous Integration](https://img.shields.io/github/actions/workflow/status/Foundation-s-r-o/tech-demo/maven.yml)](https://github.com/Foundation-s-r-o/tech-demo/actions/workflows/maven.yml)
 
 ## CodeClimate
 [![CodeClimate](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/maintainability)](https://codeclimate.com/github/Foundation-s-r-o/tech-demo/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/test_coverage)](https://codeclimate.com/github/Foundation-s-r-o/tech-demo/test_coverage)
 
 ## SonarQube
-![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
 
-![Duplicated Lines Density](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=duplicated_lines_density)
-![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=vulnerabilities)
-![Bugs](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=bugs)
-![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=security_rating)
-![Sqale Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_rating)
-![Code Smells](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=code_smells)
-![Ncloc](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=ncloc)
-![Sqale Index](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_index)
-![Alert Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=alert_status)
-![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=reliability_rating)
+[![Duplicated Lines Density](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=security_rating)](https://sonarcloud.io/project/security_hotspots?id=Foundation-s-r-o_tech-demo)
+[![Sqale Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=code_smells)](https://sonarcloud.io/project/issues?resolved=false&types=CODE_SMELL&id=Foundation-s-r-o_tech-demo)
+[![Ncloc](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Sqale Index](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=Foundation-s-r-o_tech-demo&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
