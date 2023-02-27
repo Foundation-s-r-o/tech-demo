@@ -9,11 +9,12 @@ const FndtText = ({
     value?: string | Date
     id?: string
 }) => {
-    const textValue = value
-        ? value instanceof Date
+    var textValue = children;
+    if (value) {
+        textValue = value instanceof Date
             ? value.toLocaleDateString()
-            : value
-        : children
+            : value;
+    }
 
     return (
         <div
