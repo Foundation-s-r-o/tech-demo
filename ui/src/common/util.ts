@@ -69,3 +69,9 @@ export const tabIsOpen = (activeTabs: string[], tabId: string) => {
         return ev == tabId
     })
 }
+
+export const getDateValue = (value?: string | Date) => {
+    return value instanceof Date
+        ? value.toLocaleDateString()
+        : value
+}
