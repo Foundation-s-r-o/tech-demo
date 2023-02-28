@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import {checkDateType} from '@common/util';
+import {getDateValue} from '@common/util';
 
 const FndtText = ({
     value,
@@ -10,7 +10,7 @@ const FndtText = ({
     value?: string | Date
     id?: string
 }) => {
-    const textValue = value ? checkDateType(value) : children
+    const textValue = value ? getDateValue(value) : children
 
     return (
         <div

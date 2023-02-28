@@ -20,10 +20,10 @@ export const FndtTableHeadCell = (props: FndtTableHeadCellProps) => {
     }
 
     const sortIcon = () => {
-        return isCurrent() ? checkCurrentSort() : 'bi-arrow-down-up'
+        return isCurrent() ? getCurrentSortClass() : 'bi-arrow-down-up'
     }
 
-    const checkCurrentSort = () => {
+    const getCurrentSortClass = () => {
         return tableData.currentSortDir === SortDir.Asc
             ? 'bi-arrow-up'
             : 'bi-arrow-down'
