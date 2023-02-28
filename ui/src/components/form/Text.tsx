@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import {checkDateType} from "@common/util";
+import {checkDateType} from '@common/util';
 
 const FndtText = ({
     value,
