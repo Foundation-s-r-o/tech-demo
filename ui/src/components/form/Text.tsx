@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import {checkDateType} from "@common/util";
 
 const FndtText = ({
     value,
@@ -19,12 +20,6 @@ const FndtText = ({
             {textValue}
         </div>
     )
-}
-
-const checkDateType = (value?: string | Date) => {
-    return value instanceof Date
-        ? value.toLocaleDateString()
-        : value
 }
 
 export default FndtText
