@@ -74,13 +74,9 @@ jobs:
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
     - name: Build and analyze
-      uses: sonarsource/sonarcloud-github-action@master
+      working-directory: api
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      with:
-        projectBaseDir: api
-        args: >
-          -Dsonar.projectKey=Foundation-s-r-o_tech-demo 
-          -Dsonar.organization=foundation-s-r-o-1
+      run: mvn -B test sonar:sonar org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Foundation-s-r-o_tech-demo -Dsonar.organization=foundation-s-r-o-1 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
