@@ -49,8 +49,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
-        workingDirectory: api
     - name: Build with Maven
+      working-directory: api
       run: mvn -B package
       
   sonar:
