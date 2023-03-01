@@ -26,13 +26,17 @@
 # Feel free to take a look at our documentation (https://docs.sonarcloud.io/getting-started/github/)
 # or reach out to our community forum if you need some help (https://community.sonarsource.com/c/help/sc/9)
 
-name: Java CI with Maven
+name: Java sonar check
 
 on:
-  pull_request:
-    branches: 
-      - 'main'
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag docker image'
+        default: "latest"
+      git-ref:
+        description: 'The branch, tag or SHA to checkout'
+        default: "master"
 
 jobs:
   unit-tests:
