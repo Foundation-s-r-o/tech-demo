@@ -80,7 +80,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
-        working-directory: api
+        projectBaseDir: api
         args: >
           -Dsonar.projectKey=Foundation-s-r-o_tech-demo 
           -Dsonar.organization=foundation-s-r-o-1
