@@ -100,3 +100,5 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           PROJECT_KEY: foundation-s-r-o-1_tech-demo-ui
           ORGANIZATION: foundation-s-r-o-1
+        with:
+         projectBaseDir: ui/
