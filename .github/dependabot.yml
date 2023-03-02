@@ -4,9 +4,7 @@ updates:
   - package-ecosystem: "maven"
     directory: "/api"
     schedule:
-      interval: "daily"
-      # Check for npm updates at 3pm UTC
-      time: "14:00"
+      interval: "weekly"
     labels:
       - "java dependencies"
       - "backend"
@@ -14,9 +12,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/ui"
     schedule:
-      interval: "daily"
-      # Check for npm updates at 3pm UTC
-      time: "14:00"
+      interval: "weekly"
     labels:
       - "npm dependencies"
       - "frontend"
