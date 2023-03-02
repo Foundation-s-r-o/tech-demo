@@ -26,17 +26,13 @@
 # Feel free to take a look at our documentation (https://docs.sonarcloud.io/getting-started/github/)
 # or reach out to our community forum if you need some help (https://community.sonarsource.com/c/help/sc/9)
 
-name: Java sonar check
+name: Sonar analysis
 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Run Sonar check'
-        default: "latest"
-      git-ref:
-        description: 'The branch, tag or SHA to checkout'
-        default: "master"
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   unit-tests:
@@ -53,7 +49,7 @@ jobs:
       working-directory: api
       run: mvn -B package
       
-  sonar-be:
+  sonar-api:
     runs-on: ubuntu-latest
     needs: unit-tests
     name: SonarCloud analysis
@@ -93,7 +89,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          SONAR_PROJECT_KEY: foundation-s-r-o-1_tech-demo-ui
-          SONAR_ORGANIZATION: foundation-s-r-o-1
         with:
          projectBaseDir: ui/
