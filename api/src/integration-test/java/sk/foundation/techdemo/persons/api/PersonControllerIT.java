@@ -16,6 +16,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import sk.foundation.techdemo.BaseIT;
 
 class PersonControllerIT extends BaseIT {
+	
+	private static final String API_PERSONS = "/api/persons";
+	private static final String API_PERSONS_ID = "/api/persons/{id}";
+	private static final String ADMIN = "Admin";
+	private static final String ADMIN_EMAIL = "admin@tech-demo.sk";
 
 	@Autowired
 	ObjectMapper objectMapper;
@@ -23,34 +28,34 @@ class PersonControllerIT extends BaseIT {
 	@Test
 	@Sql({ "/sql/clearAll.sql" })
 	void getPersonDetail_notFound() throws Exception {
-		mockMvc.perform(get("/api/persons/{id}", 1).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get(API_PERSONS_ID, 1).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isNotFound());
 	}
 
 	@Test
 	@Sql({ "/sql/clearAll.sql", "/sql/data.sql" })	
 	void getPersonDetail_success() throws Exception {
-		mockMvc.perform(get("/api/persons/{id}", 1).accept(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get(API_PERSONS_ID, 1).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.id").value((1L)))
-				.andExpect(jsonPath("$.firstName").value("Admin"))
-				.andExpect(jsonPath("$.lastName").value("Admin"))
-				.andExpect(jsonPath("$.email").value("admin@tech-demo.sk"));
+				.andExpect(jsonPath("$.firstName").value(ADMIN))
+				.andExpect(jsonPath("$.lastName").value(ADMIN))
+				.andExpect(jsonPath("$.email").value(ADMIN_EMAIL));
 	}
 
 	@Test
 	@Sql({ "/sql/clearAll.sql", "/sql/data.sql" })	
 	void getPersonList_success() throws Exception {
 		mockMvc.perform(
-				get("/api/persons").accept(MediaType.APPLICATION_JSON)
+				get(API_PERSONS).accept(MediaType.APPLICATION_JSON)
 						.param("sortBy", "NAME")
 						.param("sortDesc", "false"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.totalElements").value((2L)))
 				.andExpect(jsonPath("$.elements[0].id").value((1L)))
-				.andExpect(jsonPath("$.elements[0].firstName").value("Admin"))
-				.andExpect(jsonPath("$.elements[0].lastName").value("Admin"))
-				.andExpect(jsonPath("$.elements[0].email").value("admin@tech-demo.sk"));
+				.andExpect(jsonPath("$.elements[0].firstName").value(ADMIN))
+				.andExpect(jsonPath("$.elements[0].lastName").value(ADMIN))
+				.andExpect(jsonPath("$.elements[0].email").value(ADMIN_EMAIL));
 	}
 
 	@Test
@@ -62,7 +67,7 @@ class PersonControllerIT extends BaseIT {
 		dto.setEmail("fn@ln.com");
 		String content = objectMapper.writer().writeValueAsString(dto);
 		mockMvc.perform(
-				post("/api/persons").accept(MediaType.APPLICATION_JSON)
+				post(API_PERSONS).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(content))
 				.andExpect(status().isCreated());
@@ -74,10 +79,10 @@ class PersonControllerIT extends BaseIT {
 		PersonModifyRequestDTO dto = new PersonModifyRequestDTO();
 		dto.setFirstName("fn");
 		dto.setLastName("ln");
-		dto.setEmail("admin@tech-demo.sk");
+		dto.setEmail(ADMIN_EMAIL);
 		String content = objectMapper.writer().writeValueAsString(dto);
 		mockMvc.perform(
-				post("/api/persons").accept(MediaType.APPLICATION_JSON)
+				post(API_PERSONS).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(content))
 				.andExpect(status().is(409));
@@ -92,7 +97,7 @@ class PersonControllerIT extends BaseIT {
 		dto.setEmail("fn@ln.com");
 		String content = objectMapper.writer().writeValueAsString(dto);
 		mockMvc.perform(
-				put("/api/persons/{id}", 1).accept(MediaType.APPLICATION_JSON)
+				put(API_PERSONS_ID, 1).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(content))
 				.andExpect(status().isOk());
@@ -104,10 +109,10 @@ class PersonControllerIT extends BaseIT {
 		PersonModifyRequestDTO dto = new PersonModifyRequestDTO();
 		dto.setFirstName("fn#new");
 		dto.setLastName("ln#new");
-		dto.setEmail("admin@tech-demo.sk");
+		dto.setEmail(ADMIN_EMAIL);
 		String content = objectMapper.writer().writeValueAsString(dto);
 		mockMvc.perform(
-				put("/api/persons/{id}", 2).accept(MediaType.APPLICATION_JSON)
+				put(API_PERSONS_ID, 2).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(content))
 				.andExpect(status().is(409));
