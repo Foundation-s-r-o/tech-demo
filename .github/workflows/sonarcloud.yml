@@ -88,6 +88,10 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           projectBaseDir: ui
+          workingDirectory: ui/.sonar-ui
+          args: >
+            -Dsonar.sources=ui
+            -Dsonar.exclusions=api/**
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
