@@ -44,6 +44,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
       run: npm install goodparts --save-dev
+    - name: tempcheck
+      working-directory: ui
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+      run: ls
     - name: lint
       working-directory: ui
       env:
