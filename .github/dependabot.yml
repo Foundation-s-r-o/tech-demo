@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  - package-ecosystem: "composer"
+    directory: "/api"
+    schedule:
+      interval: "daily"
+      # Check for npm updates at 3pm UTC
+      time: "14:00"
+    labels:
+      - "java dependencies"
+      - "backend"
+
+  - package-ecosystem: "npm"
+    directory: "/ui"
+    schedule:
+      interval: "daily"
+      # Check for npm updates at 3pm UTC
+      time: "14:00"
+    labels:
+      - "npm dependencies"
+      - "frontend"
