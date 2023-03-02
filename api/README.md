@@ -37,6 +37,9 @@ mvn verify
 [![CodeClimate](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/maintainability)](https://codeclimate.com/github/Foundation-s-r-o/tech-demo/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ab4a2eefa91189315eb/test_coverage)](https://codeclimate.com/github/Foundation-s-r-o/tech-demo/test_coverage)
 
+## GoodParts
+[![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
+
 ## SonarQube
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/quality_gate?project=Foundation-s-r-o_tech-demo&branch=master)](https://sonarcloud.io/summary/new_code?id=Foundation-s-r-o_tech-demo)
 
