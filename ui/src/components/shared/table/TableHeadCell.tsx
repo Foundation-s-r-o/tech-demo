@@ -20,11 +20,13 @@ export const FndtTableHeadCell = (props: FndtTableHeadCellProps) => {
     }
 
     const sortIcon = () => {
-        return isCurrent()
-            ? tableData.currentSortDir === SortDir.Asc
-                ? 'bi-arrow-up'
-                : 'bi-arrow-down'
-            : 'bi-arrow-down-up'
+        return isCurrent() ? getCurrentSortClass() : 'bi-arrow-down-up'
+    }
+
+    const getCurrentSortClass = () => {
+        return tableData.currentSortDir === SortDir.Asc
+            ? 'bi-arrow-up'
+            : 'bi-arrow-down'
     }
 
     const handleSort = (event: React.MouseEvent<HTMLElement>) => {
