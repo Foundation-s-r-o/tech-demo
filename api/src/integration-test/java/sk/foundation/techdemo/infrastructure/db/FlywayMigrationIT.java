@@ -62,11 +62,13 @@ class FlywayMigrationIT {
 	@Test
 	void schemaMigrationsWereAppliedSuccessfully()
 			throws SQLException {
-		ResultSet resultSet = performQuery(
+		int resultSetInt;
+		try (ResultSet resultSet = performQuery(
 				MYSQL_CONTAINER,
-				"select count(*) from test.flyway_schema_history where success = 1");
+				"select count(*) from test.flyway_schema_history where success = 1")) {
 
-		int resultSetInt = resultSet.getInt(1);
+			resultSetInt = resultSet.getInt(1);
+		}
 		assertEquals(1, resultSetInt);
 
 		assertTrue(true);
