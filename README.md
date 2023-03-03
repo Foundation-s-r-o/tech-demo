@@ -12,3 +12,7 @@ For local build & dev information look [here](api/README.md)
 ```
 docker compose up --build -d
 ```
+
+## Code Quality
+
+Results from Sonar and CodeClimate analysis can be found in ReadMe file for backend in /api folder and for frontend in /ui folder. 
