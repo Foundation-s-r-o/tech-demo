@@ -76,10 +76,9 @@ class FlywayMigrationIT {
 	protected ResultSet performQuery(JdbcDatabaseContainer<?> container, String sql) throws SQLException {
 		DataSource ds = getDataSource(container);
 		ResultSet resultSet;
-		try (Statement statement = ds.getConnection().createStatement()) {
-			statement.execute(sql);
-			resultSet = statement.getResultSet();
-		}
+		Statement statement = ds.getConnection().createStatement();
+		statement.execute(sql);
+		resultSet = statement.getResultSet();
 
 		resultSet.next();
 		return resultSet;
