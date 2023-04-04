@@ -67,14 +67,15 @@ public class PersonApiRepositoryImpl implements PersonApiRepository {
 		}
 
 		switch (sorting.getSortBy()) {
-		case EMAIL:
-			sortByPath.add(person.get(Person_.EMAIL));
-			break;
-		default:
-			// sort by NAME is default
-			sortByPath.add(person.get(Person_.LAST_NAME));
-			sortByPath.add(person.get(Person_.FIRST_NAME));
-			break;
+			case ID -> sortByPath.add(person.get(Person_.ID));
+			case FIRST_NAME -> sortByPath.add(person.get(Person_.FIRST_NAME));
+			case LAST_NAME -> sortByPath.add(person.get(Person_.LAST_NAME));
+			case EMAIL -> sortByPath.add(person.get(Person_.EMAIL));
+			default -> {
+				// sort by NAME is default
+				sortByPath.add(person.get(Person_.LAST_NAME));
+				sortByPath.add(person.get(Person_.FIRST_NAME));
+			}
 		}
 
 		sortByPath.add(person.get(IdentifiableEntity_.ID));
